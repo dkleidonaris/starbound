@@ -75,18 +75,11 @@ const years = Math.round(new Date().getFullYear() - new Date('2024-5-30').getFul
             <div class="flex flex-col gap-6 backdrop-blur-[2px] h-full justify-center items-center p-4">
                 <img src="~/assets/img/starbound_logo.svg" alt="StarBound Logo"
                     class="mx-auto w-1/2 md:w-[200px] animate-pulseZoom" />
-                <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-md">Bound
-                    for
-                    the Stars,
+                <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-md">{{$t('headings.homepage.title1')}}
                 </p>
-                <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-lg">Driven
-                    by
-                    Innovation
+                <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-lg">{{$t('headings.homepage.title2')}}
                 </p>
-                <p class="text-xl text-white text-justify mx-auto max-w-3xl">StarBound is a student-led aerospace
-                    research
-                    team
-                    based in Volos, Greece. Its focus is on innovation and research in space technology.</p>
+                <p class="text-xl text-white text-center mx-auto max-w-3xl">{{$t('headings.homepage.description')}}</p>
             </div>
         </div>
         <div class="bg-gray-900 text-white p-4 md:p-20">
@@ -180,7 +173,7 @@ const years = Math.round(new Date().getFullYear() - new Date('2024-5-30').getFul
                     </div>
 
                     <!-- Scrollable container -->
-                    <div class="flex gap-4 overflow-x-scroll">
+                    <div class="flex gap-4 overflow-x-auto">
                         <MilestoneCard v-for="m in milestones" :key="m.id" :milestone="m" />
                     </div>
                 </div>
@@ -215,7 +208,7 @@ const years = Math.round(new Date().getFullYear() - new Date('2024-5-30').getFul
                     <div class="bg-[#111216] rounded-lg p-6 max-w-lg w-full mx-4">
                         <div class="flex justify-between items-start">
                             <h3 class="text-2xl text-white font-semibold">{{ selectedEvent?.title[locale] }}</h3>
-                            <button @click="closeEvent" class="text-gray-400 text-2xl">&times;</button>
+                            <button @click="closeEvent" class="cursor-pointer text-gray-400 text-2xl">&times;</button>
                         </div>
                         <div class="mt-4 text-gray-300">
                             <p class="mb-2"><strong>{{ $t('Ημερομηνία') }}:</strong> {{ format(new
@@ -232,7 +225,7 @@ const years = Math.round(new Date().getFullYear() - new Date('2024-5-30').getFul
                             <p class="mt-4">{{ selectedEvent?.description[locale] }}</p>
                         </div>
                         <div class="mt-6 text-right">
-                            <button @click="closeEvent" class="px-4 py-2 bg-cyan-600 rounded">Close</button>
+                            <button @click="closeEvent" class="px-4 py-2 bg-cyan-600 rounded cursor-pointer">{{$t('Κλείσιμο')}}</button>
                         </div>
                     </div>
                 </div>

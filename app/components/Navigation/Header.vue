@@ -29,7 +29,7 @@ function toggleMobileMenu() {
                         <img src="~/assets/img/starbound_logo.svg" alt="Starbound Logo" class="h-24" />
                         <div class="flex flex-col justify-center items-center">
                             <h1 class="font-bold text-2xl">StarBound</h1>
-                            <h2 class="text-sm text-nowrap">{{$t('tagline')}}</h2>
+                            <h2 class="text-sm text-nowrap">{{$t('headings.tagline')}}</h2>
                         </div>
                     </div>
                 </NuxtLink>

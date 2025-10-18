@@ -10,9 +10,24 @@
     "ΣΥΝΕΡΓΑΖΟΜΕΝΟΙ ΟΡΓΑΝΙΣΜΟΙ": "PARTNER ORGANIZATIONS",
     "ΧΡΟΝΙΑ": "YEARS",
     "Η πορεία μας": "Our journey",
-    "tagline": "An Aerospace Research Student Team",
     "Ημερομηνία": "Date",
     "Τοποθεσία": "Location",
     "Ώρα": "Time",
-    "Προσεχείς Εκδηλώσεις": "Upcoming Events"
+    "Προσεχείς Εκδηλώσεις": "Upcoming Events",
+    "headings": {
+        "tagline": "An Aerospace Research Student Team",
+        "homepage": {
+            "title1": "Bound for the Stars,",
+            "title2": "Driven by Innovation",
+            "description": "StarBound is a student-led aerospace research team based in Volos, Greece. Its focus is on innovation and research in space technology."
+        }
+    },
+    "Κλείσιμο": "Close",
+    "Διεύθυνση": "Address",
+    "Τηλέφωνο": "Phone",
+    "address": {
+        "line1": "University of Thessaly, Polytechnic University, Pedion Areos, Volos, Greece",
+        "line2": "Department of Electrical & Computer Engineering"
+    },
+    "Στοιχεία επικοινωνίας": "Contact details"
 }

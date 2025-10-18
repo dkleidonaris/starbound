@@ -1,2 +1,96 @@
 @import "tailwindcss";
-@import "@nuxt/ui";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-playfair: "Playfair Display", var(--font-serif);
+
+  @keyframes pulseZoom {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes starFlash {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  --animate-pulseZoom: pulseZoom 2.5s ease-in-out infinite;
+  --animate-starFlash: starFlash 2.5s infinite ease-in-out;
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl md:text-6xl font-bold;
+  }
+  h2 {
+    @apply text-2xl md:text-4xl font-bold;
+  }
+  h3 {
+    @apply text-2xl md:text-4xl font-bold;
+  }
+  h4 {
+    @apply text-xl md:text-2xl font-bold;
+  }
+  h5 {
+    @apply text-lg md:text-xl font-bold;
+  }
+  h6 {
+    @apply text-base md:text-lg font-bold;
+  }
+  p,
+  a {
+    @apply text-base md:text-lg;
+  }
+}
+
+@layer utilities {
+  .glow-sm {
+    text-shadow: 0 0 2px var(--tw-glow-color, currentColor);
+  }
+  .glow {
+    text-shadow: 0 0 4px var(--tw-glow-color, currentColor);
+  }
+  .glow-md {
+    text-shadow: 0 0 6px var(--tw-glow-color, currentColor);
+  }
+  .glow-lg {
+    text-shadow: 0 0 10px var(--tw-glow-color, currentColor);
+  }
+  .glow-xl {
+    text-shadow: 0 0 15px var(--tw-glow-color, currentColor);
+  }
+  .glow-2xl {
+    text-shadow: 0 0 25px var(--tw-glow-color, currentColor);
+  }
+  .glow-3xl {
+    text-shadow: 0 0 35px var(--tw-glow-color, currentColor);
+  }
+}
+
+/* Color variants */
+@layer utilities {
+  .glow-blue-500 {
+    --tw-glow-color: rgb(59 130 246);
+  } /* Tailwind blue-500 */
+  .glow-red-500 {
+    --tw-glow-color: rgb(239 68 68);
+  }
+  .glow-green-400 {
+    --tw-glow-color: rgb(74 222 128);
+  }
+  .glow-white {
+    --tw-glow-color: white;
+  }
+}

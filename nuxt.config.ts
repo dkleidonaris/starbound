@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import svgLoader from "vite-svg-loader";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   runtimeConfig: {
@@ -9,6 +10,10 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2025-07-15",
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  css: ["~/assets/css/main.css"],
   devtools: { enabled: true },
   components: [
     {
@@ -30,13 +35,7 @@ export default defineNuxtConfig({
       "Playfair Display": [400, 700],
     },
   },
-  modules: [
-    "@nuxtjs/google-fonts",
-    "@nuxtjs/i18n",
-    "@nuxt/icon",
-    "@nuxt/ui",
-  ],
-  css: ["@/assets/css/main.css"],
+  modules: ["@nuxtjs/google-fonts", "@nuxtjs/i18n", "@nuxt/icon"],
   build: {
     transpile: ["vue-countup-v3"],
   },

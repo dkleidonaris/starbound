@@ -29,7 +29,6 @@ function starStyle(n) {
 </script>
 
 <template>
-  <UApp>
     <div>
       <ClientOnly>
         <div class="stars-bg">
@@ -42,7 +41,6 @@ function starStyle(n) {
         <Footer />
       </div>
     </div>
-  </UApp>
 </template>
 
 <style scoped>
