@@ -29,5 +29,63 @@
         "line1": "University of Thessaly, Polytechnic University, Pedion Areos, Volos, Greece",
         "line2": "Department of Electrical & Computer Engineering"
     },
-    "Στοιχεία επικοινωνίας": "Contact details"
+    "Στοιχεία επικοινωνίας": "Contact details",
+    "contact": {
+        "form": {
+            "title": "Get in touch",
+            "text": "Send us a message and we'll get back to you as soon as possible.",
+            "button": "Send",
+            "sending": "Sending…",
+            "sent": "Your message has been sent successfully. We will get back to you soon."
+        }
+    },
+    "Όνομα": "Name",
+    "Μήνυμα": "Message",
+    "footer": {
+        "text": "University of Thessaly - All rights reserved"
+    },
+    "homepage": {
+        "mission": {
+            "title": "Our Mission",
+            "paragraphs": [
+                "We are committed to advancing aerospace technology and fostering public interest in the space sector. We envision the creation of a state-of-the-art and innovative educational center that bridges theory and hands-on experience. Our team consists of members from multiple departments, all collaborating to create and promote impactful interdisciplinary projects. By combining diverse academic backgrounds and skill sets, we are able to approach challenges from multiple perspectives and develop well-rounded, effective solutions.",
+                "Here are the departments contributing to our initiatives under the support of our local IEEE student branch:"
+            ],
+            "departments": [
+                "Department of Electrical and Computer Engineering",
+                "Department of Mechanical Engineering",
+                "Department of Economics",
+                "Department of Computer Science and Telecommunications",
+                "Department of Business Administration",
+                "Department of Primary Education",
+                "Department of Biochemistry and Biotechnology",
+                "Department of Civil Engineering",
+                "Department of Digital Systems",
+                "Department of Early Childhood Education"
+            ],
+            "cards": [
+                {
+                    "title": "Research & Innovation",
+                    "description": "Conducting pioneering research in propulsion systems, materials science, and aerospace engineering.",
+                    "icon": "mingcute:rocket-fill"
+                },
+                {
+                    "title": "Education & Training",
+                    "description": "Organizing educational events for team members as well as open seminars to share knowledge in technical and social skills.",
+                    "icon": "mdi:academic-cap"
+                },
+                {
+                    "title": "Collaboration",
+                    "description": "Collaborating with academic institutions, industry leaders, and space organizations to expand our reach and impact.",
+                    "icon": "ri:team-fill"
+                },
+                {
+                    "title": "Sustainability",
+                    "description": "Our goal is to develop reusable and sustainable technologies for space exploration and space missions.",
+                    "icon": "fluent:globe-20-filled"
+                }
+            ]
+        }
+    },
+    "Διαβάστε περισσότερα": "Read more"
 }

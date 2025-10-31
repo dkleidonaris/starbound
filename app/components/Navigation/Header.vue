@@ -22,7 +22,7 @@ function toggleMobileMenu() {
 <template>
     <nav>
         <!-- Desktop Header -->
-        <div class="hidden md:grid p-2 grid-cols-5 gap-4 bg-[#BCD1F9] text-[#322479] font-playfair">
+        <div class="hidden md:grid p-2 grid-cols-5 gap-4 bg-[#BCD1F9] text-[#322479]">
             <div class="col-span-1 flex gap-4">
                 <NuxtLink :to="localePath('index')">
                     <div class="flex gap-4">
@@ -51,7 +51,7 @@ function toggleMobileMenu() {
         </div>
 
         <!-- Mobile Header -->
-        <div class="md:hidden flex items-center justify-between bg-[#BCD1F9] text-[#322479] font-playfair p-2">
+        <div class="md:hidden flex items-center justify-between bg-[#BCD1F9] text-[#322479] p-2">
             <NuxtLink :to="localePath('index')" class="flex gap-2 items-center">
                 <img src="~/assets/img/starbound_logo.svg" alt="Starbound Logo" class="h-14" />
                 <div class="flex flex-col justify-center items-start">
@@ -84,7 +84,7 @@ function toggleMobileMenu() {
                     <MenuItem v-for="item in menuItems" :key="item.to" :to="item.to" :label="item.label"
                         :exact="item.exact" @click="toggleMobileMenu()" />
                     <a href="#" class="p-4 py-1 bg-blue-900 text-white rounded-full transition hover:bg-blue-600">{{
-                        t('Γίνε μέλος') }}</a>
+                        $t('Γίνε μέλος') }}</a>
                     <div class="flex gap-2 mt-4">
                         <NuxtLink v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)"
                             @click="setLocale(loc.code); toggleMobileMenu()" class="cursor-pointer">
