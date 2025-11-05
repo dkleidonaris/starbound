@@ -3,12 +3,14 @@ import { ref, onMounted } from "vue";
 import CountUp from "vue-countup-v3";
 import { format } from "date-fns";
 import { el, enUS } from "date-fns/locale";
+const localePath = useLocalePath();
 
 const apiBase = useRuntimeConfig().public.apiBase;
 const { locale } = useI18n();
 const dateLocale = locale.value === "el" ? el : enUS;
 
 const { data: membersNumber } = await useFetch(`${apiBase}/members/count`, {
+  server: false,
   transform: (res) => res.count,
   default: () => 0,
 });
@@ -16,12 +18,19 @@ const { data: membersNumber } = await useFetch(`${apiBase}/members/count`, {
 const { data: supportersNumber } = await useFetch(
   `${apiBase}/supporters/count`,
   {
+    server: false,
     transform: (res) => res.count,
     default: () => 0,
   }
 );
+const { data: supporters } = await useFetch(`${apiBase}/supporters`, {
+  server: false,
+  transform: (res) => res.data,
+  default: () => [],
+});
 
 const { data: milestones } = await useFetch(`${apiBase}/milestones`, {
+  server: false,
   transform: (res) => res.data,
   default: () => [],
 });
@@ -64,6 +73,7 @@ function closeEvent() {
 
 // Attempt to load events from API (non-breaking: keeps fallback events if fetch fails or returns empty)
 const { data: fetchedEvents } = await useFetch(`${apiBase}/events`, {
+  server: false,
   transform: (res) => res.data,
   default: () => [],
 });
@@ -127,8 +137,10 @@ const years = Math.round(
     </div>
     <section class="bg-[#17192F] py-16">
       <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
-      <div class="flex flex-col md:flex-row items-center justify-around my-12 text-white">
-        <div class="flex flex-col items-center gap-4 ">
+      <div
+        class="flex flex-col md:flex-row items-center justify-around my-12 text-white"
+      >
+        <div class="flex flex-col items-center gap-4">
           <CountUp
             :end-val="membersNumber"
             :duration="3"
@@ -166,6 +178,42 @@ const years = Math.round(
         </div>
       </div>
       <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+    </section>
+    <section class="bg-[#17191E] py-16">
+      <h2 class="text-4xl font-bold text-center text-white mb-12 mt-16">
+        {{ $t("Η ομάδα μας") }}
+      </h2>
+      <div class="flex justify-center">
+        <NuxtLink
+          :to="localePath('team')"
+          class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mb-8 hover:underline"
+        >
+          {{ $t("Δείτε όλα τα μέλη") }}
+        </NuxtLink>
+      </div>
+    </section>
+    <section>
+      <div class="max-w-7xl mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-center text-white mb-12">
+          {{ $t("Υποστηρικτές") }}
+        </h2>
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center"
+        >
+          <div
+            v-for="supporter in supporters"
+            :key="`supporter-${supporter.id}`"
+            class="flex flex-col items-center gap-4"
+          >
+            <img
+              :src="supporter.logo_url"
+              :alt="supporter.name"
+              class="max-h-20 object-contain"
+            />
+            <p class="text-white text-center">{{ supporter.name[locale] }}</p>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="bg-[#17191E] py-16">
       <div class="max-w-7xl mx-auto px-4">

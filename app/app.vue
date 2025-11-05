@@ -2,9 +2,9 @@
 const { locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
-const { locale } = useI18n()
-import Header from '~/components/Navigation/Header.vue';
-import Footer from './components/Navigation/Footer.vue';
+const { locale } = useI18n();
+import Header from "~/components/Navigation/Header.vue";
+import Footer from "./components/Navigation/Footer.vue";
 
 // Generate random star positions and sizes for the galaxy background
 function starStyle(n) {
@@ -13,34 +13,39 @@ function starStyle(n) {
   const size = Math.random() * 4 + 1;
   const delay = Math.random() * 3;
   return {
-    position: 'absolute',
+    position: "absolute",
     top: `${top}%`,
     left: `${left}%`,
     width: `${size}px`,
     height: `${size}px`,
-    borderRadius: '50%',
-    background: 'white',
+    borderRadius: "50%",
+    background: "white",
     opacity: 0.8,
     boxShadow: `0 0 ${size * 4}px #fff`,
     animationDelay: `${delay}s`, // Only delay, no animation name
     zIndex: 0,
-  }
+  };
 }
 </script>
 
 <template>
-    <div>
-      <ClientOnly>
-        <div class="stars-bg">
-          <div v-for="n in 40" :key="n" class="star animate-starFlash glow-sm glow-white" :style="starStyle(n)"></div>
-        </div>
-      </ClientOnly>
-      <div class="relative z-10">
-        <Header class="z-20 sticky top-0" />
-        <NuxtPage />
-        <Footer />
+  <div>
+    <ClientOnly>
+      <div class="stars-bg">
+        <div
+          v-for="n in 40"
+          :key="n"
+          class="star animate-starFlash glow-sm glow-white"
+          :style="starStyle(n)"
+        ></div>
       </div>
+    </ClientOnly>
+    <div class="relative z-10">
+      <Header class="z-20 sticky top-0" />
+      <NuxtPage />
+      <Footer />
     </div>
+  </div>
 </template>
 
 <style scoped>

@@ -35,7 +35,12 @@ export default defineNuxtConfig({
       "Playfair Display": [400, 700],
     },
   },
-  modules: ["@nuxtjs/google-fonts", "@nuxtjs/i18n", "@nuxt/icon"],
+  modules: [
+    "@nuxtjs/google-fonts",
+    "@nuxtjs/i18n",
+    "@nuxt/icon",
+    "@vueuse/nuxt",
+  ],
   build: {
     transpile: ["vue-countup-v3"],
   },

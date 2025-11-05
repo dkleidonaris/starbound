@@ -1,6 +1,4 @@
 <script setup>
-import { skeleton } from "#build/ui";
-
 const { locale } = useI18n();
 
 const props = defineProps({
