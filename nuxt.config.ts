@@ -38,8 +38,9 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxtjs/i18n",
-    "@nuxt/icon",
+    // "@nuxt/icon",
     "@vueuse/nuxt",
+    "nuxt-icon-tw",
   ],
   build: {
     transpile: ["vue-countup-v3"],

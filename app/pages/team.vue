@@ -4,30 +4,54 @@ const { locale } = useI18n();
 
 const apiBase = config.public.apiBase;
 
-const dataPending = ref(true);
-const dataError = ref(null);
+const pageLoading = usePageLoading();
+pageLoading.value = true;
 
-const teams = ref([]);
-const members = ref([]);
-const departments = ref([]);
-
-onMounted(async () => {
-  dataPending.value = true;
-  try {
-    const [teamsRes, membersRes, departmentsRes] = await Promise.all([
-      $fetch(`${apiBase}/teams`).then((r) => r.data),
-      $fetch(`${apiBase}/members`).then((r) => r.data),
-      $fetch(`${apiBase}/departments`).then((r) => r.data),
-    ]);
-    teams.value = teamsRes;
-    members.value = membersRes;
-    departments.value = departmentsRes;
-  } catch (err) {
-    dataError.value = err;
-  } finally {
-    dataPending.value = false;
-  }
+const {
+  data: teams,
+  pending: teamsPending,
+  error: teamsError,
+} = await useFetch(`${apiBase}/teams`, {
+  transform: (res) => res.data,
+  default: () => [],
+  server: false,
 });
+
+const {
+  data: members,
+  pending: membersPending,
+  error: membersError,
+} = await useFetch(`${apiBase}/members`, {
+  transform: (res) => res.data,
+  default: () => [],
+  server: false,
+});
+
+const {
+  data: departments,
+  pending: departmentsPending,
+  error: departmentsError,
+} = await useFetch(`${apiBase}/departments`, {
+  transform: (res) => res.data,
+  default: () => [],
+  server: false,
+});
+
+const pending = computed(
+  () => teamsPending.value || membersPending.value || departmentsPending.value
+);
+
+const error = computed(
+  () => teamsError.value || membersError.value || departmentsError.value
+);
+
+watch(
+  pending,
+  (newVal) => {
+    pageLoading.value = newVal;
+  },
+  { immediate: true }
+);
 
 const colors = {
   professors: { glow: "glow-red-600", text: "text-red-600", bg: "bg-red-600" },
@@ -72,65 +96,18 @@ const colors = {
       {{ $t("Η ομάδα μας") }}
     </h1>
     <div class="max-w-[1200px] mx-auto p-2">
-      <div v-if="dataPending">
-        <div
-          class="bg-[#131422] rounded-md shadow-md p-4 glow-sm hover:glow transition hover:-translate-y-1 glow-cyan-300"
-        >
+      <div></div>
+      <div class="flex flex-col gap-8">
+        <div v-for="team in teams" :key="`team-${team.id}`"
+          class="bg-[#131422] rounded-md shadow-md p-4 glow-sm hover:glow transition hover:-translate-y-1 glow-cyan-300">
           <div class="flex items-center gap-2 mb-4">
-            <div
-              class="w-1 h-[2rem] rounded-md shadow-md"
-              :class="Object.values(colors)[0].bg"
-            ></div>
-            <h2 class="animate-pulse bg-gray-500 rounded-sm"><span class="invisible">Team Name</span></h2>
-          </div>
-          <div class="grid md:grid-cols-4 gap-8">
-            <div
-              v-for="n in 8"
-              :key="`skeleton-${n}`"
-              class="flex flex-col items-center gap-1"
-            >
-              <img
-                src="~/assets/img/profile-placeholder.png"
-                alt="Profile Placeholder"
-                class="mx-auto w-40 aspect-square animate-pulse"
-              />
-              <div class="bg-gray-500 animate-pulse rounded-sm">
-                <p class="invisible">Member Name</p>
-              </div>
-              <div class="bg-gray-500 animate-pulse rounded-sm">
-                <p class="invisible">Role of Member</p>
-              </div>
-              <div class="bg-gray-500 animate-pulse rounded-sm">
-                <p class="invisible">Department Name</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-else class="flex flex-col gap-8">
-        <div
-          v-for="team in teams"
-          :key="`team-${team.id}`"
-          class="bg-[#131422] rounded-md shadow-md p-4 glow-sm hover:glow transition hover:-translate-y-1 glow-cyan-300"
-        >
-          <div class="flex items-center gap-2 mb-4">
-            <div
-              class="w-1 h-[2rem] rounded-md shadow-md"
-              :class="colors[team.slug].bg"
-            ></div>
+            <div class="w-1 h-8 rounded-md shadow-md" :class="colors[team.slug].bg"></div>
             <h2 class="text-white">{{ team.name[locale] }}</h2>
           </div>
           <div class="grid md:grid-cols-4 gap-8">
-            <MemberCard
-              v-for="member in members.filter((m) => m.team_id == team.id)"
-              :key="`member-${member.id}`"
-              :member="member"
-              :department="
-                departments.find((d) => d.id === member.department_id)
-              "
-              :colors="colors[team.slug]"
-              :skeleton="dataPending"
-            />
+            <MemberCard v-for="member in members.filter((m) => m.team_id == team.id)" :key="`member-${member.id}`"
+              :member="member" :department="departments.find((d) => d.id === member.department_id)
+                " :colors="colors[team.slug]" :skeleton="dataPending" />
           </div>
         </div>
       </div>

@@ -6,6 +6,18 @@ const { locale } = useI18n();
 import Header from "~/components/Navigation/Header.vue";
 import Footer from "./components/Navigation/Footer.vue";
 
+useHead({
+  titleTemplate: (titleChunk) =>
+    titleChunk ? `${titleChunk} - Starbound` : "Starbound",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Starbound is a research group at the University of Thessaly focused on space science and technology.",
+    },
+  ],
+});
+
 // Generate random star positions and sizes for the galaxy background
 function starStyle(n) {
   const top = Math.random() * 100;
@@ -29,15 +41,11 @@ function starStyle(n) {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
+    <PageLoader />
     <ClientOnly>
       <div class="stars-bg">
-        <div
-          v-for="n in 40"
-          :key="n"
-          class="star animate-starFlash glow-sm glow-white"
-          :style="starStyle(n)"
-        ></div>
+        <div v-for="n in 40" :key="n" class="star animate-starFlash glow-sm glow-white" :style="starStyle(n)"></div>
       </div>
     </ClientOnly>
     <div class="relative z-10">

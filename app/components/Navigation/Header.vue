@@ -2,12 +2,19 @@
 import { ref } from 'vue';
 import MenuItem from './MenuItem.vue';
 const localePath = useLocalePath();
-const { locale, locales, setLocale                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          } = useI18n();
+const { locale, locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
 const menuItems = [
     { to: 'index', label: 'Αρχική', exact: true },
-    { to: 'team', label: 'Η ομάδα μας' },
+    {
+        to: null, label: 'Σχετικά με εμάς',
+        submenu: [
+            { to: 'team', label: 'Η ομάδα μας', },
+            { to: 'values', label: 'Οι αξίες μας', },
+        ]
+    },
+    // { to: 'projects', label: 'Projects' },
     { to: 'news', label: 'Νέα' },
     { to: 'supporters', label: 'Υποστηρικτές' },
     { to: 'contact', label: 'Επικοινωνία' },
@@ -29,24 +36,30 @@ function toggleMobileMenu() {
                         <img src="~/assets/img/starbound_logo.svg" alt="Starbound Logo" class="h-24" />
                         <div class="flex flex-col justify-center items-center">
                             <h1 class="font-bold text-2xl">StarBound</h1>
-                            <h2 class="text-sm text-nowrap">{{$t('headings.tagline')}}</h2>
+                            <h2 class="text-sm text-nowrap">{{ $t('headings.tagline') }}</h2>
                         </div>
                     </div>
                 </NuxtLink>
             </div>
             <div class="col-span-3 flex gap-10 text-xl justify-center items-center ml-8">
                 <MenuItem v-for="item in menuItems" :key="item.to" :to="item.to" :label="item.label"
-                    :exact="item.exact" />
-                <a href="#" class="p-4 py-1 bg-blue-900 text-white rounded-full transition hover:bg-blue-600">{{
-                    $t('Γίνε μέλος') }}</a>
+                    :submenu="item.submenu" :exact="item.exact" />
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGUHR5nvLINE5B_iUFckAYPgUM81P3yGozB6FuNV6q6mYjOQ/viewform"
+                    target="_blank" class="p-4 py-1 bg-blue-900 text-white rounded-full transition hover:bg-blue-600">{{
+                        $t('Γίνε μέλος') }}</a>
             </div>
             <div class="col-span-1 ml-auto flex gap-2 items-center">
                 <a href="https://www.uth.gr" target="_blank"><img :src="`/img/uth_logo_${locale}.svg`" alt="UTH Logo"
                         class="h-20 mr-4"></a>
-                <NuxtLink v-for="loc in locales" :key="loc.code" :to="switchLocalePath(loc.code)"
-                    @click="setLocale(loc.code)" class="cursor-pointer">
-                    <img :src="`/img/flags/${loc.code}.svg`" :alt="loc.code" class="h-6 w-9 object-cover" />
-                </NuxtLink>
+                <div v-for="loc in locales" :key="loc.code">
+                    <img v-if="locale === loc.code" :src="`/img/flags/${loc.code}.svg`" :alt="loc.code"
+                        class="h-6 w-9 object-cover opacity-50" />
+                    <NuxtLink v-else :to="{ path: switchLocalePath(loc.code), query: { keepScroll: '1' } }"
+                        @click="setLocale(loc.code)" class="cursor-pointer">
+                        <img :src="`/img/flags/${loc.code}.svg`" :alt="loc.code" class="h-6 w-9 object-cover" />
+                    </NuxtLink>
+                </div>
             </div>
         </div>
 
@@ -56,7 +69,6 @@ function toggleMobileMenu() {
                 <img src="~/assets/img/starbound_logo.svg" alt="Starbound Logo" class="h-14" />
                 <div class="flex flex-col justify-center items-start">
                     <h1 class="font-bold text-lg">StarBound</h1>
-                    <h2 class="text-xs">Μια Φοιτητική Ομάδα Αεροδιαστημικής Έρευνας</h2>
                 </div>
             </NuxtLink>
             <div class="flex items-center gap-2">

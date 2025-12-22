@@ -1,6 +1,8 @@
 {
     "Αρχική": "Home",
     "Η ομάδα μας": "Our team",
+    "Οι αξίες μας": "Our values",
+    "Σχετικά με εμάς": "About us",
     "Νέα": "News",
     "Υποστηρικτές": "Supporters",
     "Επικοινωνία": "Contact",
@@ -38,6 +40,35 @@
             "sending": "Sending…",
             "sent": "Your message has been sent successfully. We will get back to you soon."
         }
+    },
+    "values": [
+        {
+            "title": "Collaboration and Interdisciplinarity",
+            "description": "Our strength stems from the convergence of diverse fields of knowledge—Electrical and Computer Engineers, Mechanical Engineers, as well as students from the Departments of Economics, Computer Science, Education, and other specialties at the University of Thessaly. Close collaboration and mutual respect among members with different profiles and perspectives enable us to create innovative and multifaceted solutions in the realm of science."
+        },
+        {
+            "title": "Professionalism and Dedication",
+            "description": "We approach challenges with seriousness, methodical planning, and responsibility. Every project, every approach, and every collaboration represents an opportunity for us to rise to the occasion and earn the trust of the academic and professional community."
+        },
+        {
+            "title": "Learning Evolution and Personal Development",
+            "description": "Participating in StarBound is much more than just an activity. It is a space for education, experimentation, trial and error, and learning—developing technical skills, soft skills, and innovative thinking. Through workshops, project development, and collaborations, we bridge theory with practice and transform knowledge into meaningful action, giving every member the opportunity to grow."
+        },
+        {
+            "title": "Innovation and Goal-Orientation",
+            "description": "We are not limited to reproducing known solutions. We seek original, bold, and sustainable ideas, from building a UAV to experimenting with space technology."
+        },
+        {
+            "title": "Social Responsibility and a Sustainable Future",
+            "description": "We believe that science and research must coexist with social awareness. The development of technologies that respect the environment—such as recyclable materials, reusable systems, energy efficiency, and partial or total reduction of environmental footprint—as well as the dissemination of knowledge to the wider public, are integral elements of our mission."
+        }
+    ],
+    "news": {
+        "title": "Latest News",
+        "subtitle": "Updates from StarBound team",
+        "search": "Search...",
+        "selectCategory": "Select Category",
+        "readMore": "Read more"
     },
     "Όνομα": "Name",
     "Μήνυμα": "Message",
@@ -88,5 +119,10 @@
         }
     },
     "Διαβάστε περισσότερα": "Read more",
-    "Δείτε όλα τα μέλη": "See all members"
+    "Δείτε όλα τα μέλη": "See all members",
+    "Φίλτρα": "Filters",
+    "Κατηγορίες": "Categories",
+    "Αναζήτηση": "Search",
+    "Δείτε όλους τους υποστηρικτές": "See all supporters",
+    "Γρήγοροι Σύνδεσμοι": "Quick Links"
 }

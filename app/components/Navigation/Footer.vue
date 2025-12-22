@@ -13,8 +13,7 @@ const localePath = useLocalePath();
           {{ $t("About StarBound") }}
         </h3>
         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-          StarBound is a student-led aerospace research team based in Volos,
-          Greece. Its focus is on innovation and research in space technology.
+          {{$t('headings.homepage.description')}}
         </p>
 
         <!-- Social Icons -->
@@ -59,42 +58,42 @@ const localePath = useLocalePath();
         <h3
           class="text-lg font-semibold mb-4 border-b-2 border-cyan-400 inline-block pb-1"
         >
-          {{ $t("Quick Links") }}
+          {{ $t("Γρήγοροι Σύνδεσμοι") }}
         </h3>
         <ul class="space-y-2 text-gray-400 text-sm">
           <li>
             <NuxtLink
               :to="localePath('index')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
-              >{{ $t("Home") }}</NuxtLink
+              >{{ $t("Αρχική") }}</NuxtLink
             >
           </li>
           <li>
             <NuxtLink
               :to="localePath('team')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
-              >{{ $t("Our Team") }}</NuxtLink
+              >{{ $t("Η ομάδα μας") }}</NuxtLink
             >
           </li>
           <li>
             <NuxtLink
               :to="localePath('supporters')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
-              >{{ $t("Supporters") }}</NuxtLink
+              >{{ $t("Υποστηρικτές") }}</NuxtLink
             >
           </li>
           <li>
             <NuxtLink
               :to="localePath('news')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
-              >{{ $t("News") }}</NuxtLink
+              >{{ $t("Νέα") }}</NuxtLink
             >
           </li>
           <li>
             <NuxtLink
               :to="localePath('contact')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
-              >{{ $t("Contact") }}</NuxtLink
+              >{{ $t("Επικοινωνία") }}</NuxtLink
             >
           </li>
         </ul>

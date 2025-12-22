@@ -2,10 +2,13 @@ import type { RouterConfig } from "@nuxt/schema";
 
 export default {
   scrollBehavior(to, from, savedPosition) {
-    // if going back/forward in history
     if (savedPosition) return savedPosition;
 
-    // otherwise, do not change scroll (for locale switch etc.)
+    // 👇 If keepScroll=1 is in the query, don't scroll
+    if (to.query.keepScroll) {
+      return false;
+    }
+
     return { left: 0, top: 0 };
   },
 } as RouterConfig;
