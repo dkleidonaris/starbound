@@ -1,9 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "flowbite/plugin";
+@import "@nuxt/ui";
 
 @theme {
   --font-playfair: "Playfair Display", var(--font-serif);
+  --font-rubik: "Rubik Spray Paint", var(--font-sans);
+  --font-joti: "Joti One", var(--font-sans);
+  --font-knewave: "Knewave", var(--font-sans);
 
   @keyframes pulseZoom {
 

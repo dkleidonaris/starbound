@@ -7,6 +7,10 @@ const apiBase = config.public.apiBase;
 const pageLoading = usePageLoading();
 pageLoading.value = true;
 
+useSeoMeta({
+  title: $t("Η ομάδα μας"),
+});
+
 const {
   data: teams,
   pending: teamsPending,
@@ -38,11 +42,11 @@ const {
 });
 
 const pending = computed(
-  () => teamsPending.value || membersPending.value || departmentsPending.value
+  () => teamsPending.value || membersPending.value || departmentsPending.value,
 );
 
 const error = computed(
-  () => teamsError.value || membersError.value || departmentsError.value
+  () => teamsError.value || membersError.value || departmentsError.value,
 );
 
 watch(
@@ -50,7 +54,7 @@ watch(
   (newVal) => {
     pageLoading.value = newVal;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const colors = {
@@ -98,16 +102,44 @@ const colors = {
     <div class="max-w-[1200px] mx-auto p-2">
       <div></div>
       <div class="flex flex-col gap-8">
-        <div v-for="team in teams" :key="`team-${team.id}`"
-          class="bg-[#131422] rounded-md shadow-md p-4 glow-sm hover:glow transition hover:-translate-y-1 glow-cyan-300">
+        <div
+          v-for="team in teams"
+          :key="`team-${team.id}`"
+          class="bg-[#131422] rounded-md shadow-md p-4 glow-sm hover:glow transition hover:-translate-y-1 glow-cyan-300"
+        >
           <div class="flex items-center gap-2 mb-4">
-            <div class="w-1 h-8 rounded-md shadow-md" :class="colors[team.slug].bg"></div>
+            <div
+              class="w-1 h-8 rounded-md shadow-md"
+              :class="colors[team.slug]?.bg || 'bg-gray-500'"
+            ></div>
             <h2 class="text-white">{{ team.name[locale] }}</h2>
           </div>
           <div class="grid md:grid-cols-4 gap-8">
-            <MemberCard v-for="member in members.filter((m) => m.team_id == team.id)" :key="`member-${member.id}`"
-              :member="member" :department="departments.find((d) => d.id === member.department_id)
-                " :colors="colors[team.slug]" :skeleton="dataPending" />
+            <MemberCard
+              v-for="member in members
+                .filter((m) => m.team_id == team.id)
+                .slice()
+                .sort((a, b) => {
+                  const orderA = a.order ?? 999;
+                  const orderB = b.order ?? 999;
+
+                  if (orderA !== orderB) {
+                    return orderA - orderB;
+                  }
+
+                  const lastA = a.last_name?.[locale] || '';
+                  const lastB = b.last_name?.[locale] || '';
+
+                  return lastA.localeCompare(lastB, locale);
+                })"
+              :key="`member-${member.id}`"
+              :member="member"
+              :department="
+                departments.find((d) => d.id === member.department_id)
+              "
+              :colors="colors[team.slug] || colors.default"
+              :skeleton="pending"
+            />
           </div>
         </div>
       </div>

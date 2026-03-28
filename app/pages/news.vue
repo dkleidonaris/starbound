@@ -2,7 +2,6 @@
 const config = useRuntimeConfig();
 const { locale } = useI18n();
 const localePath = useLocalePath();
-import { watchDebounced, refDebounced } from '@vueuse/core';
 
 const apiBase = config.public.apiBase;
 
@@ -11,6 +10,10 @@ pageLoading.value = true;
 
 const searchQuery = ref('');
 const selectedCategory = ref('all');
+
+useSeoMeta({
+  title: () => $t("Νέα"),
+});
 
 const query = computed(() => ({
   q: searchQuery.value || undefined,
@@ -35,9 +38,6 @@ const { data: categories, pending: categoriesPending, error: categoriesError } =
   lazy: true,
 })
 
-// watchDebounced([searchQuery, selectedCategory], () => {
-//   refreshPosts();
-// }, { debounce: 500 });
 </script>
 
 <template>

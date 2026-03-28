@@ -100,10 +100,13 @@ const props = defineProps({
       </div>
 
       <h3 class="text-lg font-semibold" :class="colors.text">
-        {{ member.name[locale] }}
+        {{ member.last_name?.[locale] || "" }}
+        {{ member.first_name?.[locale] || "" }}
       </h3>
-      <p class="text-gray-400">{{ member.role[locale] }}</p>
-      <p class="text-gray-400 text-sm">{{ department.name[locale] }}</p>
+      <p class="text-gray-400">{{ member.role?.[locale] || "" }}</p>
+      <p class="text-gray-400 text-sm">
+        {{ department?.name?.[locale] || "" }}
+      </p>
     </div>
   </div>
 </template>

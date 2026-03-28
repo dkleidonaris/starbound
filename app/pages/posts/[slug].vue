@@ -28,8 +28,8 @@ pageLoading.value = false;
         {{ new Date(data?.published_at).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
         }}
       </div>
-      <img :src="data?.featured_image_url" alt="">
-      <div v-html="data?.content[locale]" class="my-8 prose prose-invert"></div>
+      <img :src="data?.featured_image_url" alt="Featured Image" class="mx-auto">
+      <div v-html="data?.content[locale]" class="my-8 mx-auto prose prose-invert"></div>
     </div>
   </div>
 </template>

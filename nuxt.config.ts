@@ -13,6 +13,9 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  ui: {
+    colorMode: false
+  },
   css: ["~/assets/css/main.css"],
   devtools: { enabled: true },
   components: [
@@ -23,8 +26,8 @@ export default defineNuxtConfig({
   ],
   i18n: {
     locales: [
-      { code: "el", file: "el.json", name: "Ελληνικά" },
-      { code: "en", file: "en.json", name: "English" },
+      { code: "el", file: "el.json", name: "Ελληνικά", flag: "gr" },
+      { code: "en", file: "en.json", name: "English", flag: "gb" },
     ],
     defaultLocale: "el",
     strategy: "prefix_except_default",
@@ -33,6 +36,9 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       "Playfair Display": [400, 700],
+      "Rubik Spray Paint": 400,
+      "Joti One": 400,
+      "Knewave": 400,
     },
   },
   modules: [
@@ -41,6 +47,7 @@ export default defineNuxtConfig({
     // "@nuxt/icon",
     "@vueuse/nuxt",
     "nuxt-icon-tw",
+    '@nuxt/ui'
   ],
   build: {
     transpile: ["vue-countup-v3"],

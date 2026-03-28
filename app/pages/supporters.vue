@@ -1,6 +1,10 @@
 <script setup>
 const config = useRuntimeConfig()
-const { locale } = useI18n()
+const { locale } = useI18n();
+
+useSeoMeta({
+  title: $t("Υποστηρικτές"),
+});
 
 const apiBase = config.public.apiBase
 

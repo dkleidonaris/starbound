@@ -13,7 +13,7 @@ const localePath = useLocalePath();
           {{ $t("About StarBound") }}
         </h3>
         <p class="text-gray-400 text-sm leading-relaxed mb-4">
-          {{$t('headings.homepage.description')}}
+          {{ $t("headings.homepage.description") }}
         </p>
 
         <!-- Social Icons -->
@@ -111,20 +111,22 @@ const localePath = useLocalePath();
           <div
             class="flex items-start gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
-            <i class="fas fa-map-marker-alt text-cyan-400 mt-0.5"></i>
+            <Icon name="line-md:my-location" class="text-cyan-400 mt-1 size-4" />
             <p>University of Thessaly, Pedion Areos, Volos, Greece</p>
           </div>
           <div
             class="flex items-start gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
-            <i class="fas fa-phone-alt text-cyan-400 mt-0.5"></i>
+            <Icon name="line-md:phone" class="text-cyan-400 mt-1 size-4" />
             <p>+30 6974814209 <br />(Charis Zachariadis)</p>
           </div>
           <div
             class="flex items-center gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
-            <i class="fas fa-envelope text-cyan-400"></i>
-            <p class="truncate">starbound.teamuth@gmail.com</p>
+            <Icon name="line-md:email" class="text-cyan-400 mt-1 size-4" />
+            <a href="mailto:starbound@uth.gr" class="truncate"
+              >starbound@uth.gr</a
+            >
           </div>
         </div>
 

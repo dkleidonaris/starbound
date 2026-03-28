@@ -16,6 +16,9 @@
     "Τοποθεσία": "Location",
     "Ώρα": "Time",
     "Προσεχείς Εκδηλώσεις": "Upcoming Events",
+    "seo": {
+        "description": "StarBound is a student-led aerospace research team based in Volos, Greece. Its focus is on innovation and research in space technology."
+    },
     "headings": {
         "tagline": "An Aerospace Research Student Team",
         "homepage": {

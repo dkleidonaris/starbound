@@ -1,5 +1,9 @@
 <script setup>
-const { t } = useI18n()
+const { t } = useI18n();
+
+useSeoMeta({
+  title: $t("Οι αξίες μας"),
+});
 
 const openIndex = ref(0)
 
@@ -48,7 +52,7 @@ const toggle = (index) => {
 
             <!-- RIGHT: IMAGE -->
             <div class="sticky top-24">
-                <img src="/img/starbound_team.png" alt="Our values" class="w-full rounded-xl shadow-lg object-cover" />
+                <img src="/img/team.webp" alt="Our values" class="w-full rounded-xl shadow-lg object-cover" />
             </div>
         </div>
     </div>

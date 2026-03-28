@@ -8,14 +8,16 @@ import Footer from "./components/Navigation/Footer.vue";
 
 useHead({
   titleTemplate: (titleChunk) =>
-    titleChunk ? `${titleChunk} - Starbound` : "Starbound",
+    titleChunk ? `${titleChunk} - StarBound` : "StarBound",
   meta: [
     {
       name: "description",
-      content:
-        "Starbound is a research group at the University of Thessaly focused on space science and technology.",
+      content: () => $t("seo.description"),
     },
   ],
+  htmlAttrs: {
+    lang: () => locale.value,
+  },
 });
 
 // Generate random star positions and sizes for the galaxy background
@@ -41,11 +43,16 @@ function starStyle(n) {
 </script>
 
 <template>
-  <div class="relative">
+  <UApp class="relative" :locale="locale">
     <PageLoader />
     <ClientOnly>
       <div class="stars-bg">
-        <div v-for="n in 40" :key="n" class="star animate-starFlash glow-sm glow-white" :style="starStyle(n)"></div>
+        <div
+          v-for="n in 40"
+          :key="n"
+          class="star animate-starFlash glow-sm glow-white"
+          :style="starStyle(n)"
+        ></div>
       </div>
     </ClientOnly>
     <div class="relative z-10">
@@ -53,7 +60,7 @@ function starStyle(n) {
       <NuxtPage />
       <Footer />
     </div>
-  </div>
+  </UApp>
 </template>
 
 <style scoped>

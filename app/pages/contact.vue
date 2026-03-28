@@ -5,8 +5,11 @@ const apiBase = useRuntimeConfig().public.apiBase;
 const pageLoading = usePageLoading();
 pageLoading.value = false;
 
-// Placeholder: put your background image in `assets/img/contact-bg.jpg`
-const bgPath = "/assets/img/contact-bg.jpg";
+useSeoMeta({
+  title: $t("Επικοινωνία"),
+});
+
+const bgPath = "/img/team.webp";
 
 const hero = ref<HTMLElement | null>(null);
 const sent = ref(false);
@@ -86,8 +89,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section ref="hero" class="min-h-[70vh] py-16 bg-cover bg-center bg-fixed flex items-center" :style="bgStyle">
-    <div class="container mx-auto px-4">
+  <section ref="hero" class="relative min-h-[70vh] py-16 bg-cover bg-center bg-fixed flex items-center">
+    <div class="absolute inset-0 z-10 bg-[url(/img/team.webp)] bg-cover bg-no-repeat bg-fixed"></div>
+    <div class="absolute bg-[#141e30] inset-0 z-20 opacity-70"></div>
+    <div class="container mx-auto px-4 z-30">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
         <!-- Contact form box -->
         <div
@@ -165,7 +170,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="flex gap-2 items-center mb-2">
               <Icon name="mdi:building" class="w-8 h-8" />
-              <a href="mailto:starbound.teamuth@gmail.com">starbound.teamuth@gmail.com</a>
+              <a href="mailto:starbound@uth.gr">starbound@uth.gr</a>
             </div>
           </div>
 

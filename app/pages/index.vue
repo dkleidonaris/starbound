@@ -26,7 +26,7 @@ const { data: supportersNumber } = await useFetch(
     transform: (res) => res.count,
     default: () => 0,
     lazy: true,
-  }
+  },
 );
 const { data: supporters } = await useFetch(`${apiBase}/supporters`, {
   server: false,
@@ -86,20 +86,29 @@ const { data: events } = await useFetch(`${apiBase}/events`, {
 });
 
 const years = Math.round(
-  new Date().getFullYear() - new Date("2024-5-30").getFullYear()
+  new Date().getFullYear() - new Date("2024-5-30").getFullYear(),
 );
 </script>
 
 <template>
   <div>
     <div class="h-screen bg-[url('/img/starry_bg.jpg')] bg-cover bg-fixed">
-      <div class="flex flex-col gap-6 backdrop-blur-[2px] h-full justify-center items-center p-4">
-        <img src="~/assets/img/starbound_logo.svg" alt="StarBound Logo"
-          class="mx-auto w-1/2 md:w-[200px] animate-pulseZoom" />
-        <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-md">
+      <div
+        class="flex flex-col gap-6 backdrop-blur-[2px] h-full justify-center items-center p-4"
+      >
+        <img
+          src="~/assets/img/starbound_logo.svg"
+          alt="StarBound Logo"
+          class="mx-auto w-1/2 md:w-[200px] animate-pulseZoom"
+        />
+        <p
+          class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-sm text-shadow-gray-200"
+        >
           {{ $t("headings.homepage.title1") }}
         </p>
-        <p class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-lg">
+        <p
+          class="text-[#7761e0] text-center text-4xl md:text-6xl font-bold tracking-wide text-shadow-sm text-shadow-gray-200"
+        >
           {{ $t("headings.homepage.title2") }}
         </p>
         <p class="text-xl text-white text-center mx-auto max-w-3xl">
@@ -121,7 +130,11 @@ const years = Math.round(
         </div>
         <ClientOnly>
           <div class="grid md:grid-cols-2 gap-4">
-            <MissionCard v-for="m in $tm('homepage.mission.cards')" :icon="$rt(m.icon)" :heading="$rt(m.title)">
+            <MissionCard
+              v-for="m in $tm('homepage.mission.cards')"
+              :icon="$rt(m.icon)"
+              :heading="$rt(m.title)"
+            >
               {{ $rt(m.description) }}
             </MissionCard>
           </div>
@@ -130,37 +143,59 @@ const years = Math.round(
     </div>
     <section class="bg-[#17192F] py-16">
       <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
-      <div class="flex flex-col md:flex-row items-center justify-around my-12 text-white">
+      <div
+        class="flex flex-col md:flex-row items-center justify-around my-12 text-white"
+      >
         <div class="flex flex-col items-center gap-4">
-          <CountUp :end-val="membersNumber" :duration="3" :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
-            class="text-6xl font-bold text-[#865BE1]" />
+          <CountUp
+            :end-val="membersNumber"
+            :duration="3"
+            :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
+            class="text-6xl font-bold text-[#865BE1]"
+          />
           <p>{{ $t("ΜΕΛΗ ΟΜΑΔΑΣ") }}</p>
         </div>
         <div class="flex flex-col items-center gap-4">
-          <count-up :end-val="2" :duration="2" :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
-            class="text-6xl font-bold text-[#865BE1]" />
+          <count-up
+            :end-val="2"
+            :duration="2"
+            :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
+            class="text-6xl font-bold text-[#865BE1]"
+          />
           <p>{{ $t("ΕΝΕΡΓΑ ΕΡΓΑ") }}</p>
         </div>
         <div class="flex flex-col items-center gap-4">
-          <count-up :end-val="supportersNumber" :duration="4" :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
-            class="text-6xl font-bold text-[#865BE1]" />
+          <count-up
+            :end-val="supportersNumber"
+            :duration="4"
+            :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
+            class="text-6xl font-bold text-[#865BE1]"
+          />
           <p>{{ $t("ΣΥΝΕΡΓΑΖΟΜΕΝΟΙ ΟΡΓΑΝΙΣΜΟΙ") }}</p>
         </div>
         <div class="flex flex-col items-center gap-4">
-          <count-up :end-val="years" :duration="4" :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
-            class="text-6xl font-bold text-[#865BE1]" />
+          <count-up
+            :end-val="years"
+            :duration="4"
+            :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
+            class="text-6xl font-bold text-[#865BE1]"
+          />
           <p>{{ $t("ΧΡΟΝΙΑ") }}</p>
         </div>
       </div>
       <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
     </section>
-    <section class="bg-[#17191E] py-16 bg-[url('/img/starbound_team.png')] bg-cover bg-center">
+    <section
+      class="bg-[#17191E] py-16 bg-[url('/img/team_bg.jpg')] bg-cover bg-top"
+    >
       <h2 class="text-4xl font-bold text-center text-white mb-12 mt-16">
         {{ $t("Η ομάδα μας") }}
       </h2>
       <div class="flex justify-center">
-        <NuxtLink :to="localePath('team')"
-          class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mb-8 hover:underline">
+        <NuxtLink
+          :to="localePath('team')"
+          class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mb-8 hover:underline"
+        >
           {{ $t("Δείτε όλα τα μέλη") }}
         </NuxtLink>
       </div>
@@ -170,15 +205,27 @@ const years = Math.round(
         <h2 class="text-4xl font-bold text-center text-white mb-12">
           {{ $t("Υποστηρικτές") }}
         </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
-          <div v-for="supporter in supporters" :key="`supporter-${supporter.id}`"
-            class="flex flex-col items-center gap-4">
-            <img :src="supporter.logo_url" :alt="supporter.name" class="max-h-20 object-contain" />
+        <div class="flex gap-8 items-center justify-around flex-wrap">
+          <div
+            v-for="supporter in supporters.slice(0, 5)"
+            :key="`supporter-${supporter.id}`"
+            class="flex flex-col items-center gap-4 w-20 aspect-square"
+          >
+            <img
+              :src="supporter.logo_url"
+              :alt="supporter.name"
+              class="h-20 object-contain p-1"
+              :class="{
+                'bg-white': supporter.bg,
+              }"
+            />
             <p class="text-white text-center">{{ supporter.name[locale] }}</p>
           </div>
         </div>
-        <NuxtLink :to="localePath('supporters')"
-          class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mt-8 hover:underline block w-max">
+        <NuxtLink
+          :to="localePath('supporters')"
+          class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mt-8 hover:underline block w-max"
+        >
           {{ $t("Δείτε όλους τους υποστηρικτές") }}
         </NuxtLink>
       </div>
@@ -191,7 +238,9 @@ const years = Math.round(
 
         <div>
           <!-- Timeline horizontal line with gradient -->
-          <div class="h-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"></div>
+          <div
+            class="h-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
+          ></div>
 
           <!-- Scrollable container -->
           <div class="flex gap-4 overflow-x-auto">
@@ -211,9 +260,16 @@ const years = Math.round(
             No upcoming events
           </div>
           <div v-else class="space-y-2 max-h-[60vh] overflow-y-auto pr-2">
-            <div v-for="ev in events" :key="ev.id"
+            <div
+              v-for="ev in events"
+              :key="ev.id"
               class="bg-[#232530] rounded-lg p-4 text-white hover:bg-[#2a2b35] cursor-pointer transition"
-              @click="openEvent(ev)">
+              :class="{
+                'border border-green-500 bg-green-900 hover:bg-green-800':
+                  new Date() > new Date(ev.end_date),
+              }"
+              @click="openEvent(ev)"
+            >
               <div class="flex items-center justify-between">
                 <div>
                   <div class="text-sm text-gray-300">
@@ -227,20 +283,35 @@ const years = Math.round(
                     {{ ev.location[locale] }}
                   </div>
                 </div>
-                <div class="text-gray-400">&rsaquo;</div>
+                <Icon
+                  v-if="new Date() > new Date(ev.end_date)"
+                  name="lets-icons:done-duotone"
+                  class="size-10"
+                />
+                <Icon
+                  v-else
+                  name="line-md:arrow-up-circle"
+                  class="rotate-90 size-10"
+                />
               </div>
             </div>
           </div>
         </div>
 
         <!-- Event modal -->
-        <div v-if="showEventModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+        <div
+          v-if="showEventModal"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+        >
           <div class="bg-[#111216] rounded-lg p-6 max-w-lg w-full mx-4">
             <div class="flex justify-between items-start">
               <h3 class="text-2xl text-white font-semibold">
                 {{ selectedEvent?.title[locale] }}
               </h3>
-              <button @click="closeEvent" class="cursor-pointer text-gray-400 text-2xl">
+              <button
+                @click="closeEvent"
+                class="cursor-pointer text-gray-400 text-2xl"
+              >
                 &times;
               </button>
             </div>
@@ -268,7 +339,10 @@ const years = Math.round(
               <p class="mt-4">{{ selectedEvent?.description[locale] }}</p>
             </div>
             <div class="mt-6 text-right">
-              <button @click="closeEvent" class="px-4 py-2 bg-cyan-600 rounded cursor-pointer">
+              <button
+                @click="closeEvent"
+                class="px-4 py-2 bg-cyan-600 rounded cursor-pointer"
+              >
                 {{ $t("Κλείσιμο") }}
               </button>
             </div>
