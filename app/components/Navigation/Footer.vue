@@ -10,7 +10,7 @@ const localePath = useLocalePath();
         <h3
           class="text-lg font-semibold mb-4 border-b-2 border-cyan-400 inline-block pb-1"
         >
-          {{ $t("About StarBound") }}
+          {{ $t("Σχετικά με τη StarBound") }}
         </h3>
         <p class="text-gray-400 text-sm leading-relaxed mb-4">
           {{ $t("headings.homepage.description") }}
@@ -104,21 +104,24 @@ const localePath = useLocalePath();
         <h3
           class="text-lg font-semibold mb-4 border-b-2 border-cyan-400 inline-block pb-1"
         >
-          {{ $t("Contact Us") }}
+          {{ $t("Επικοινωνήστε μαζί μας") }}
         </h3>
 
         <div class="flex flex-col gap-3 text-sm text-gray-300">
           <div
             class="flex items-start gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
-            <Icon name="line-md:my-location" class="text-cyan-400 mt-1 size-4" />
-            <p>University of Thessaly, Pedion Areos, Volos, Greece</p>
+            <Icon name="line-md:my-location" class="text-cyan-400 mt-1 size-4 shrink-0" />
+            <div class="flex flex-col gap-2">
+              <p>{{$t("address.line2")}}</p>
+              <p>{{$t("address.line1")}}</p>
+            </div>
           </div>
           <div
             class="flex items-start gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
             <Icon name="line-md:phone" class="text-cyan-400 mt-1 size-4" />
-            <p>+30 6974814209 <br />(Charis Zachariadis)</p>
+            <a href="tel:+306941677896">+30 6941677896 <br />({{$t("contact.representative")}})</a>
           </div>
           <div
             class="flex items-center gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
@@ -134,7 +137,7 @@ const localePath = useLocalePath();
           to="/contact"
           class="inline-block mt-4 text-cyan-300 font-medium relative group transition"
         >
-          {{ $t("Contact Form") }}
+          {{ $t("Φόρμα Επικοινωνίας") }}
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-300 to-blue-400 group-hover:w-full transition-all"
           ></span>

@@ -9,6 +9,7 @@ import Footer from "./components/Navigation/Footer.vue";
 useHead({
   titleTemplate: (titleChunk) =>
     titleChunk ? `${titleChunk} - StarBound` : "StarBound",
+  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   meta: [
     {
       name: "description",

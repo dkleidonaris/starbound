@@ -86,7 +86,7 @@ const { data: events } = await useFetch(`${apiBase}/events`, {
 });
 
 const years = Math.round(
-  new Date().getFullYear() - new Date("2024-5-30").getFullYear(),
+  new Date().getFullYear() - new Date("2023-5-30").getFullYear(),
 );
 </script>
 
@@ -154,15 +154,6 @@ const years = Math.round(
             class="text-6xl font-bold text-[#865BE1]"
           />
           <p>{{ $t("ΜΕΛΗ ΟΜΑΔΑΣ") }}</p>
-        </div>
-        <div class="flex flex-col items-center gap-4">
-          <count-up
-            :end-val="2"
-            :duration="2"
-            :options="{ enableScrollSpy: true, scrollSpyOnce: true }"
-            class="text-6xl font-bold text-[#865BE1]"
-          />
-          <p>{{ $t("ΕΝΕΡΓΑ ΕΡΓΑ") }}</p>
         </div>
         <div class="flex flex-col items-center gap-4">
           <count-up

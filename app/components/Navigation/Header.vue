@@ -11,13 +11,25 @@ const menuItems = computed(() => [
     icon: "ix:about",
     children: [
       {
-        to: localePath("team"),
+        to: localePath("team-season"),
         label: $t("Η ομάδα μας"),
         slot: "team",
         icon: "ri:team-line",
         children: [
-          { label: "2025-26", to: localePath("team") },
-          { label: "2024-2025", icon: "hugeicons:coming-soon-01" },
+          {
+            label: "2025-26",
+            to: localePath({
+              name: "team-season",
+              params: { season: "2025-26" },
+            }),
+          },
+          {
+            label: "2024-25",
+            to: localePath({
+              name: "team-season",
+              params: { season: "2024-25" },
+            }),
+          },
         ],
       },
       {

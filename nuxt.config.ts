@@ -4,6 +4,15 @@ import svgLoader from "vite-svg-loader";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+  nitro: {
+    prerender: {
+      routes: [
+        '/team',
+        '/team/2024-25',
+        '/team/2025-26'
+      ]
+    }
+  },
   runtimeConfig: {
     public: {
       apiBase: "",
