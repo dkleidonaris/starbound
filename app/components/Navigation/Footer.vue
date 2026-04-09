@@ -70,7 +70,7 @@ const localePath = useLocalePath();
           </li>
           <li>
             <NuxtLink
-              :to="localePath('team')"
+              :to="localePath('team-season')"
               class="hover:text-cyan-300 hover:translate-x-1 transition"
               >{{ $t("Η ομάδα μας") }}</NuxtLink
             >

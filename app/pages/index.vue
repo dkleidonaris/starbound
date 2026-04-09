@@ -184,7 +184,7 @@ const years = Math.round(
       </h2>
       <div class="flex justify-center">
         <NuxtLink
-          :to="localePath('team')"
+          :to="localePath('team-season')"
           class="bg-blue-500 text-center mx-auto text-white p-2 rounded-md mb-8 hover:underline"
         >
           {{ $t("Δείτε όλα τα μέλη") }}
