@@ -121,7 +121,7 @@ const localePath = useLocalePath();
             class="flex items-start gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
           >
             <Icon name="line-md:phone" class="text-cyan-400 mt-1 size-4" />
-            <a href="tel:+306941677896">+30 6941677896 <br />({{$t("contact.representative")}})</a>
+            <a href="tel:+306941677896">+30 697 4814 209<br />({{$t("contact.representative")}})</a>
           </div>
           <div
             class="flex items-center gap-3 bg-[#172554] p-3 rounded-lg hover:-translate-y-1 hover:shadow-lg transition"
