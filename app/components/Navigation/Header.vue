@@ -125,6 +125,17 @@ const langSwitcherItems = computed(() =>
       </template>
 
       <template #right>
+        <UTooltip :text="$t('uth')" :delay-duration="0">
+          <ULink
+            :href="
+              locale == 'en' ? 'https://www.uth.gr/en/' : 'https://www.uth.gr/'
+            "
+            target="_blank"
+            ><UAvatar
+              :src="`/img/uth_logo_${locale}.png`"
+              size="3xl"
+              class="border border-black hover:scale-105 transition mr-4" /></ULink
+        ></UTooltip>
         <UNavigationMenu :items="langSwitcherItems" class="hidden md:block" />
       </template>
     </UHeader>
